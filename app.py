@@ -22,7 +22,7 @@ ALLOWED_EXTENSIONS = {'mp4', 'avi', 'mov', 'mkv', 'jpg', 'jpeg', 'png'}
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-model = YOLO("cityscapes_yolo/yolov8s_results/weights/last.pt")
+model = YOLO("yolov8s.pt")  # Will download automatically if not present
 
 def run_prediction(image_path, output_name):
     if not os.path.exists(image_path):
@@ -67,7 +67,7 @@ def upload_file():
             output_filename = 'output_' + filename.rsplit('.', 1)[0] + '.mp4'
             output_path = os.path.join(OUTPUT_FOLDER, output_filename)
             try:
-                subprocess.run(['python', 'run_tracking.py', '--input', input_path, '--output', output_path], check=True)
+                subprocess.run(['python3', 'run_tracking.py', '--input', input_path, '--output', output_path], check=True)
             except subprocess.CalledProcessError as e:
                 return f"Error processing file: {e}", 500
             return render_template('result.html', output_filename=output_filename)

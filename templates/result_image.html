@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Detection Result - Object Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="result-container">
+            <div class="result-header">
+                <h2>Image Detection Complete</h2>
+                <p>Objects have been successfully detected and labeled in your image</p>
+            </div>
+            
+            <div class="result-content">
+                <div class="image-comparison">
+                    <div class="image-box">
+                        <h3>Original Image</h3>
+                        <img src="{{ url_for('uploaded_file', filename=input_filename) }}" alt="Original image" class="result-image">
+                    </div>
+                    <div class="image-box">
+                        <h3>Detection Result</h3>
+                        <img src="{{ url_for('predicted_image_file', filename=output_filename) }}" alt="Detection result" class="result-image">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="action-buttons">
+                <a href="{{ url_for('predicted_image_file', filename=output_filename) }}" download class="btn btn-primary">Download Result</a>
+                <a href="/" class="btn btn-secondary">Process Another File</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

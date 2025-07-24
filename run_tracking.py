@@ -117,7 +117,7 @@ class KalmanTrackerManager:
 
 def main(input_path, output_path):
     # Load YOLOv8 model
-    model = YOLO("cityscapes_yolo/yolov8s_results/weights/last.pt")
+    model = YOLO("yolov8s.pt")  # Will download automatically if not present
     tracker = KalmanTrackerManager()
     # Video I/O
     cap = cv2.VideoCapture(input_path)

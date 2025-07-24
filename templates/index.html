@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Detection System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Object Detection System</h1>
+            <p class="subtitle">Upload an image or video for real-time object detection and tracking</p>
+        </header>
+
+        <main>
+            <div class="upload-section">
+                <form id="uploadForm" action="/upload" method="post" enctype="multipart/form-data">
+                    <div class="drop-zone" id="dropZone">
+                        <svg class="upload-icon" xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        <p class="drop-text">Drag and drop your file here or click to browse</p>
+                        <p class="file-types">Supported formats: JPG, PNG, MP4, AVI, MOV, MKV</p>
+                        <input type="file" name="file" id="fileInput" accept=".jpg,.jpeg,.png,.mp4,.avi,.mov,.mkv" required>
+                    </div>
+                    <button type="submit" class="submit-btn" id="submitBtn" disabled>Process File</button>
+                </form>
+            </div>
+
+            <div class="preview-section" id="previewSection" style="display: none;">
+                <h3>Selected File</h3>
+                <div class="file-info">
+                    <span id="fileName"></span>
+                    <span id="fileSize"></span>
+                </div>
+                <div id="imagePreview" class="image-preview"></div>
+            </div>
+        </main>
+
+        <section class="features">
+            <h2>Features</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>Image Detection</h3>
+                    <p>Identify and classify objects in static images with high accuracy</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Video Tracking</h3>
+                    <p>Track multiple objects across video frames with real-time processing</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Counting System</h3>
+                    <p>Automatic counting of objects crossing designated lines</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Multi-Class Support</h3>
+                    <p>Detect various object types including vehicles, people, and traffic signs</p>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>Built with YOLOv8 and Flask</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
