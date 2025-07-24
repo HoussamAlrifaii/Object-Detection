@@ -27,12 +27,22 @@ cd Object-Detection
 
 2. Install dependencies:
 ```bash
-pip install flask opencv-python ultralytics filterpy werkzeug
+pip install -r requirements.txt
 ```
 
 ## Usage
 
-1. Start the Flask server:
+### Quick Start (Recommended)
+```bash
+python3 start_app.py
+```
+This script will automatically:
+- Check and install missing dependencies
+- Verify the YOLO model
+- Create required directories
+- Start the Flask server
+
+### Manual Start
 ```bash
 python3 app.py
 ```
@@ -78,6 +88,35 @@ Object-Detection/
 - Implements Kalman filtering for smooth object tracking
 - Browser-compatible video codec (H.264/AVC1)
 - Responsive design with drag-and-drop file upload
+
+## Troubleshooting
+
+### Common Issues
+
+1. **Model not loading**: The YOLO model (yolov8s.pt) will be downloaded automatically on first use. Ensure you have internet connection.
+
+2. **Dependencies missing**: Use `python3 start_app.py` which automatically checks and installs missing packages.
+
+3. **File upload fails**: Check that your file format is supported (JPG, JPEG, PNG for images; MP4, AVI, MOV, MKV for videos).
+
+4. **Processing errors**: Check the terminal output for detailed error messages and logs.
+
+### Testing
+
+Run the test suite to verify everything is working:
+```bash
+python3 test_functionality.py
+```
+
+## Recent Fixes (v2.0)
+
+- ✅ Fixed duplicate ALLOWED_EXTENSIONS definition
+- ✅ Added comprehensive error handling and logging
+- ✅ Improved model loading with proper error checking
+- ✅ Enhanced file upload validation
+- ✅ Added startup script with dependency checking
+- ✅ Created test suite for validation
+- ✅ Fixed line ending issues (Windows/Unix compatibility)
 
 ## License
 
